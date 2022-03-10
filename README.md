@@ -1,2 +1,2 @@
-# zshconf
-Turn zsh into the ultimate command-line power tool
+# zsh
+My zsh config files
