@@ -19,6 +19,7 @@ declare -A git=(
     're'   'git revert'
     'rh'   'reset --hard'
     'rs'   'reset --soft'
+    'rm'   'rm --cached'
     'st'   'stash'
     'chb'  'checkout -b'
     'sta'  'stash apply'
