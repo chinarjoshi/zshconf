@@ -65,7 +65,6 @@ declare -A etc=(
     '...'      '../..'
     '....'     '../../..'
     'l'        'ls --color=auto -lFgGh'
-    'r'        '. ranger'
     'v'        'nvim'
     'du'       'ncdu'
     'll'       'ls --color=auto -AlFgGh'
