@@ -65,15 +65,3 @@ cpfile() { cat $1 | wl-copy }
 cpdir() { echo $PWD | wl-copy }
 
 rt() { mv $@ $HOME/.local/share/Trash }
-
-vpn() { 
-    sudo openconnect --csd-wrapper /usr/lib/openconnect/hipreport.sh --protocol=gp https://vpn.gatech.edu <<- EOF
-	cjoshi44
-	$GT_PASSWD
-	push1
-	ni-ext-gw.vpn.gatech.edu
-	$GT_PASSWD
-	push1
-	ni-ext-gw.vpn.gatech.edu
-EOF
-}
