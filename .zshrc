@@ -24,9 +24,8 @@ n=$DOTFILES/nvim
 dl=$HOME/Downloads
 pac=/var/cache/pacman/pkg
 
-for file in $ZDOTDIR/custom/*; do
-    . $file
-done
+. $ZDOTDIR/alias.zsh
+. $ZDOTDIR/function.zsh
 
 for file in $ZDOTDIR/plugins/*; do
     [[ $file == *.zsh ]] && . $file

@@ -44,8 +44,7 @@ declare -A pacman=(
     'q'    'Q'
     'u'    'Syu' )
 for letter flag in ${(@kv)pacman[@]}; do
-    alias "p$letter"="sudo pacman --color=auto --noconfirm -$flag"
-    alias "y$letter"="yay --color=auto --noconfirm -$flag"
+    alias "p$letter"="yay --color=auto --noconfirm -$flag"
 done
 
 # Declares pip aliases of the form:
@@ -62,36 +61,29 @@ done
 
 # Assorted convenience aliases
 declare -A etc=(
-    '...'      '../..'
-    '....'     '../../..'
-    'l'        'ls --color=auto -lFgGh'
-    'v'        'nvim'
-    'k'        'killall'
-    'p'        'python3'
-    't'        'echo "People call you t......."'
-    'du'       'ncdu'
-    'll'       'ls --color=auto -AlFgGh'
-    'rb'       'reboot'
-    'sd'       'shutdown now'
-    'wn'       'systemctl reboot --boot-loader-entry=windows.conf'
-    'dup'      "$HOME/.emacs.d/bin/doom upgrade"
-    'lll'      'ls --color=auto -Al'
-    'red'      'redshift -P -O 4000'
-    'rem'      'killall emacs && emacs --daemon'
-    'syn'      'aiksaurus'
-    'jup'      'jupyter notebook $p/fastbook'
-    'top'      'htop'
-    'open'     'xdg-open'
-    'bios'     'systemctl reboot --firmware-setup'
-    'wlan'     'iwctl station wlan0'
-    'stack'    'search stackoverflow'
-    'chrome'   'google-chrome-stable'
-    'einit?'   "$EDITOR $DOTFILES/emacs/init.el"
-    'github'   'search github'
-    'suspend'    'sudo systemctl suspend'
-    'google'   'search google'
-    'econfig?' "$EDITOR $DOTFILES/emacs/config.el"
-    'gesture?' "$EDITOR $DOTFILES/libinput/libinput-gestures.conf" )
+    '...'       '../..'
+    '....'      '../../..'
+    'l'         'ls --color=auto -lFgGh'
+    'v'         'nvim'
+    'k'         'killall'
+    'p'         'python3'
+    't'         'echo "People call you t......."'
+    'du'        'ncdu'
+    'll'        'ls --color=auto -AlFgGh'
+    'rb'        'reboot'
+    'sd'        'shutdown now'
+    'wn'        'systemctl reboot --boot-loader-entry=windows.conf'
+    'dup'       "$HOME/.emacs.d/bin/doom upgrade"
+    'lll'       'ls --color=auto -Al'
+    'red'       'redshift -P -O 4000'
+    'jup'       'jupyter notebook $p/fastbook'
+    'top'       'htop'
+    'open'      'xdg-open'
+    'chrome'    'google-chrome-stable'
+    'alias?'    "$EDITOR $ZDOTDiR/alias.zsh"
+    'suspend'   'sudo systemctl suspend'
+    'gesture?'  "$EDITOR $DOTFILES/libinput/libinput-gestures.conf"
+    'function?' "$EDITOR $ZDOTDiR/function.zsh" )
 for key value in "${(@kv)etc[@]}"; do
     alias "$key"="$value"
 done
@@ -117,9 +109,4 @@ done
 # Z startup file aliases
 for file in $(ls -A $ZDOTDIR | grep '^.z'); do
     alias ${file:1}$CFG="$EDITOR $ZDOTDIR/$file"
-done
-
-# Custom zsh file aliases
-for file in $(ls $ZDOTDIR/custom); do
-    alias ${file%.zsh}$CFG="$EDITOR $ZDOTDIR/custom/$file"
 done
