@@ -41,7 +41,6 @@ declare -A pacman=(
     'ss'   'Ss'
     'sc'   'Sc'
     'r'    'Rs'
-    'q'    'Q'
     'u'    'Syu' )
 for letter flag in ${(@kv)pacman[@]}; do
     alias "p$letter"="yay --color=auto --noconfirm -$flag"
@@ -68,7 +67,6 @@ declare -A etc=(
     'k'         'killall'
     'p'         'python3'
     't'         'echo "People call you t......."'
-    'du'        'ncdu'
     'll'        'ls --color=auto -AlFgGh'
     'rb'        'reboot'
     'sd'        'shutdown now'
@@ -80,10 +78,10 @@ declare -A etc=(
     'top'       'htop'
     'open'      'xdg-open'
     'chrome'    'google-chrome-stable'
-    'alias?'    "$EDITOR $ZDOTDiR/alias.zsh"
+    'alias?'    "$EDITOR $DOTFILES/zsh/alias.zsh"
     'suspend'   'sudo systemctl suspend'
     'gesture?'  "$EDITOR $DOTFILES/libinput/libinput-gestures.conf"
-    'function?' "$EDITOR $ZDOTDiR/function.zsh" )
+    'function?' "$EDITOR $DOTFILES/zsh/function.zsh" )
 for key value in "${(@kv)etc[@]}"; do
     alias "$key"="$value"
 done

@@ -6,6 +6,16 @@ g() {
     git push origin
 }
 
+pq() {
+    yay --color=auto --noconfirm -Q | rg "$@"
+}
+
+wifi() {
+    sudo modprobe -r bcma ssb b43 wl
+    sudo modprobe wl
+    sudo systemctl restart NetworkManager
+}
+
 f() {
     tmp="$(mktemp)"
     lf -last-dir-path="$tmp" "$@"

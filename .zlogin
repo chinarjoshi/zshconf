@@ -1,3 +1,3 @@
 if [[ -z "${DISPLAY}" && $XDG_VTNR -eq 1 ]]; then
-    exec sway --unsupported-gpu
+    sway --unsupported-gpu
 fi
