@@ -34,14 +34,13 @@ for letter command in "${(@kv)git[@]}"; do
 done
 
 # Declares package manager aliases of the form:
-#     alias p{letter} = sudo pacman -{flag}
-#     alias y{letter} = yay -{flag}
+#     alias p{letter} = yay -{flag}
 declare -A pacman=(
-    'i'    'S'
+    'i'    'Sq'
     'ss'   'Ss'
     'sc'   'Sc'
     'r'    'Rs'
-    'u'    'Syu' )
+    'u'    'Syuq' )
 for letter flag in ${(@kv)pacman[@]}; do
     alias "p$letter"="yay --color=auto --noconfirm -$flag"
 done
@@ -71,9 +70,7 @@ declare -A etc=(
     'rb'        'reboot'
     'sd'        'shutdown now'
     'wn'        'systemctl reboot --boot-loader-entry=windows.conf'
-    'dup'       "$HOME/.emacs.d/bin/doom upgrade"
     'lll'       'ls --color=auto -Al'
-    'red'       'redshift -P -O 4000'
     'jup'       'jupyter notebook $p/fastbook'
     'top'       'htop'
     'open'      'xdg-open'
