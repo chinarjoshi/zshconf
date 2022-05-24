@@ -4,7 +4,6 @@
 setopt autocd # cd with path name
 unsetopt beep # Inhibit beeping
 . $ZDOTDIR/theme/powerlevel10k.zsh-theme
-. $HOME/.cargo/env
 typeset -g POWERLEVEL9K_INSTANT_PROMPT=quiet
 autoload -Uz compinit && compinit
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
@@ -18,11 +17,11 @@ d=$DOTFILES
 j=$HOME/projects/java
 o=$HOME/org
 p=$HOME/projects
+py=$p/python
 r=$HOME/projects/rust
 z=$ZDOTDIR
 n=$DOTFILES/nvim
 dl=$HOME/Downloads
-pac=/var/cache/pacman/pkg
 
 . $ZDOTDIR/alias.zsh
 . $ZDOTDIR/function.zsh
