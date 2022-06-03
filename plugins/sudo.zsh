@@ -31,18 +31,6 @@ sudo-command-line() {
     local realcmd="${${(Az)aliases[$cmd]}[1]:-$cmd}"
     # Get the first part of the $EDITOR command ($EDITOR may have arguments after it)
     local editorcmd="${${(Az)EDITOR}[1]}"
-
-    # Note: ${var:c} makes a $PATH search and expands $var to the full path
-    # The if condition is met when:
-    # - $realcmd is '$EDITOR'
-    # - $realcmd is "cmd" and $EDITOR is "cmd"
-    # - $realcmd is "cmd" and $EDITOR is "cmd --with --arguments"
-    # - $realcmd is "/path/to/cmd" and $EDITOR is "cmd"
-    # - $realcmd is "/path/to/cmd" and $EDITOR is "/path/to/cmd"
-    # or
-    # - $realcmd is "cmd" and $EDITOR is "cmd"
-    # - $realcmd is "cmd" and $EDITOR is "/path/to/cmd"
-    # or
     # - $realcmd is "cmd" and $EDITOR is /alternative/path/to/cmd that appears in $PATH
     if [[ "$realcmd" = (\$EDITOR|$editorcmd|${editorcmd:c}) \
       || "${realcmd:c}" = ($editorcmd|${editorcmd:c}) ]] \

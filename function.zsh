@@ -43,5 +43,17 @@ gcl() { git clone https://github.com/$1 }
 
 rs() { rustc $1.rs && ./$1 ${@:2} }
 
+teju() {
+    ngrok http 8888 &
+    sleep 2
+    link=$(curl http://localhost:4040/api/tunnels | rg -o '(https://[^"]+)')
+    node ~/projects/discord.js $link
+}
+
+switch-graphics() {
+    p=/boot/loader/entries/arch.conf
+    sudo sed -i "s/$([[ $(rg nouveau $p) ]] && echo 'nouveau/nvidia' || echo 'nvidia/nouveau')/"
+}
+
 zle -N f
 bindkey '^f' f
