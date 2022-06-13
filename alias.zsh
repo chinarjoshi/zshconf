@@ -86,6 +86,8 @@ declare -A etc=(
     'open'      'xdg-open'
     'sizeof'    'du -sch'
     'sizedir'   'du -sch ./{.,}*'
+    'packages'  'yay -Qent | bat'
+    'pkgs?'     "$EDITOR $DOTFILES/arch-install/pkgs.sh"
     'alias?'    "$EDITOR $DOTFILES/zsh/alias.zsh"
     'gesture?'  "$EDITOR $DOTFILES/libinput/libinput-gestures.conf"
     'function?' "$EDITOR $DOTFILES/zsh/function.zsh" )
