@@ -40,7 +40,7 @@ declare -A pacman=(
     'i'    'Sq'
     'ss'   'Ss'
     'sc'   'Sc'
-    'r'    'Rs'
+    'r'    'Rns'
     'u'    'Syuq' )
 for letter flag in ${(@kv)pacman[@]}; do
     alias "p$letter"="yay --color=auto --noconfirm -$flag"
@@ -78,16 +78,18 @@ declare -A etc=(
     'sv'        'sudoedit'
     'k'         'pkill'
     'p'         'python3'
-    'l'         'unbuffer ls --color=auto -1F | while read line; do echo "| $line"; done'
-    'll'        'unbuffer ls --color=auto -1AF | while read line; do echo "| $line"; done'
     'lll'       'ls --color=auto -Al'
+    'rmf'       'rm -rf'
     'jup'       'jupyter notebook $p'
     'top'       'htop'
     'open'      'xdg-open'
     'sizeof'    'du -sch'
+    'email'     'firefox https://google.com/mail'
     'sizedir'   'du -sch ./{.,}*'
-    'packages'  'yay -Qent | bat'
-    'pkgs?'     "$EDITOR $DOTFILES/arch-install/pkgs.sh"
+    'bigpkgs'   "yay -Qi --color=auto | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nrk 2 | grep MiB | less"
+    'pkgs'      'yay -Qent --color=auto | bat'
+    'pkgs?'     '$EDITOR $DOTFILES/arch-install/pkgs.sh'
+    'main?'     "$EDITOR $DOTFILES/arch-install/post-chroot.sh"
     'alias?'    "$EDITOR $DOTFILES/zsh/alias.zsh"
     'gesture?'  "$EDITOR $DOTFILES/libinput/libinput-gestures.conf"
     'function?' "$EDITOR $DOTFILES/zsh/function.zsh" )

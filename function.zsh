@@ -6,8 +6,16 @@ g() {
     git push origin
 }
 
+l() {
+    unbuffer ls $@ --color=auto -1F | while read line; do echo "| $line"; done
+}
+
+ll() {
+    unbuffer ls $@ --color=auto -1AF | while read line; do echo "| $line"; done
+}
+
 pq() {
-    yay --color=auto --noconfirm -Q | rg "$@"
+    yay --color=auto --noconfirm -Qq | rg "$@"
 }
 
 f() {
@@ -33,6 +41,8 @@ command_not_found_handler() {
     fi
 }
 
+searchmod() {lsmod | rg $@}
+
 gcl() { git clone https://github.com/$1 }
 
 rs() { rustc $1.rs && ./$1 ${@:2} }
@@ -43,6 +53,7 @@ collab() {
     link=$(curl http://localhost:4040/api/tunnels | rg -o '(https://[^"]+)')
     node ~/projects/discord.js $link
 }
+
 
 zle -N f
 bindkey '^f' f

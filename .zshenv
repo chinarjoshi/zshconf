@@ -4,17 +4,15 @@ declare -A env=(
     'EDITOR'         'nvim'
     'ZDOTDIR'         "$DOTFILES/zsh"
     'GTK_BACKEND'      'wayland'
-    'VDPAU_DRIVER'      'nvidia'
+    'VDPAU_DRIVER'      'va_gl'
     'QT_QPA_PLATFORM'    'wayland'
     'XDG_CONFIG_HOME'     "$HOME/.config"
     'WLR_DRM_DEVICES'      '/dev/dri/card0'
     'XDG_SESSION_TYPE'      'wayland'
-    'LIBVA_DRIVER_NAME'      'nvidia'
+    'LIBVA_DRIVER_NAME'      'iHD'
     'XDG_CURRENT_DESKTOP'     'sway'
     'MOZ_ENABLE_WAYLAND'       '1'
-    'WLR_NO_HARDWARE_CURSORS'   '1'
-    '__NV_PRIME_RENDER_OFFLOAD'  '1'
-    '__GLX_VENDOR_LIBRARY_NAME'   'nvidia' )
+    'WLR_NO_HARDWARE_CURSORS'   '1' )
 for name value in "${(@kv)env[@]}"; do
     export $name=$value
 done
